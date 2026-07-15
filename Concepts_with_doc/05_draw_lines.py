@@ -1,4 +1,4 @@
-# Draw lines
+# Drawing lines
 
 import cv2 as cv
 import numpy as np
@@ -8,7 +8,7 @@ BLUE = (255, 255, 0)
 
 p0, p1, p2 = (10, 10), (100, 150), (400, 20)
 
-# Task1:  Create a color image
+# Task1:  Create a blank color image
 image = np.zeros((200, 500, 3), np.uint8)
 
 cv.line(image, p0, p1, RED, 2)
@@ -17,7 +17,7 @@ cv.imshow('BGR IMAGE', image)
 
 # ---------------------------------------------------------------------------
 
-# Task2: Create a black and white image
+# Task2: Create a blank greyscale image
 grey_image = np.zeros((200, 500), np.uint8)
 
 p3 = (400, 150)
