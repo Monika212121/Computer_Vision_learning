@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+
 def perspectiveTransform():
     root = os.getcwd()
     imgPath = os.path.join(root, 'data/cat2.webp ')
@@ -33,9 +34,13 @@ def perspectiveTransform():
     plt.imshow(imgTrans)
     plt.plot(p2[:,0], p2[:,1], 'r.')
 
+    output_path = os.path.join(root, 'output/03_perspective_trns.jpg') 
+    cv.imwrite(output_path, imgTrans)
     plt.show()
+
 
 
 if __name__ == "__main__":
     perspectiveTransform()
+
 
