@@ -10,7 +10,6 @@ def histogramEqual():
     img = cv.imread(imgPath, cv.IMREAD_GRAYSCALE)
 
     # 1. Histogram of dark  distorted image
-    hist = cv.calcHist([img], [0], None, [256], [0, 256])
     hist = cv.calcHist([img], [0], None, [256], [0,256])
 
     cdf = hist.cumsum()
@@ -55,7 +54,7 @@ def histogramEqual():
     plt.xlabel('Pixel Intensity')
     plt.ylabel('No. of pixels')
 
-
+ 
     output_path = os.path.join(root, 'output/05_histEqualization.jpg') 
     plt.savefig(output_path, bbox_inches = 'tight')
     plt.show()
