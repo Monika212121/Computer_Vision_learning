@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 
 
 def createGaussianKernel(kernel_size: int, sigma: int):
-    kernel = cv.getGaussianKernel(ksize= kernel_size, sigma= sigma)
-    kernel = np.outer(kernel, kernel)
-    return kernel
+    gaussian_1d = cv.getGaussianKernel(ksize= kernel_size, sigma= sigma)        # 1D kernel , e.q. gaussian_1d = [a, b, c]
+    gaussian_2d = np.outer(gaussian_1d, gaussian_1d)                            # 1D -> 2D kernel, it gives outer product, row[a b c] * col[a b c] = 3 * 3 matrix
+    return gaussian_2d
 
 
 def callback(input):
