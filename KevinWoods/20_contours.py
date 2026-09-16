@@ -10,7 +10,7 @@ def contours():
     imgPath = os.path.join(root, 'data/tesla_logo.webp')
     img = cv.imread(imgPath, cv.IMREAD_GRAYSCALE)
 
-    # Taking only logo region
+    # 1. Taking only logo region
     img = img[206:421, 380:660]
 
     plt.figure()
@@ -32,25 +32,26 @@ def contours():
 
     kernel = np.ones((7,7), np.uint8)
 
-    # To enlarge boundaries of objects in the image
+    # 2. To enlarge boundaries of objects in the image
     imgThresh = cv.dilate(imgThresh, kernel)                                            # to show image details better
-
-    # Implmenting contours to find all possible contours in the image
-    contours, _ = cv.findContours(imgThresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)      # RETR TREE will get all contours without heirarchy
-
-    contours = [contours[0]]
-    cv.drawContours(img, contours, -1, (0, 255, 0), 5)
 
     plt.subplot(232)
     plt.imshow(imgThresh, cmap = 'gray')
-    plt.title('Binary mask')
+    plt.title('Binary mask (dilated)')
+
+    # 3. Implmenting contours to find all possible contours in the image
+    contours, _ = cv.findContours(imgThresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)      # RETR TREE will get all contours without heirarchy
+
+    # Taking the first and biggest contour (relevant)
+    contours = [contours[0]]
+    cv.drawContours(img, contours, -1, (0, 255, 0), 5)                                  # drawing contours n the image(in reality, I can't see anthing)
 
     plt.subplot(233)
     plt.imshow(img, cmap = 'gray')
     plt.title('Contours')
 
 
-    # Finding COM (Centre Of Mass) of the image
+    # 4. Finding COM (Centre Of Mass) of the image
     M = cv.moments(contours[0])
     Cx = int(M['m10']/M['m00'])
     Cy = int(M['m01']/M['m00'])
@@ -75,25 +76,27 @@ def contours():
 
     plt.plot(approx[:, 0, 0], approx[:, 0, 1])
 
-    # Draw boundary with contour edge points in image
+    # 5. Draw boundary with contour edge points in image
     hull = cv.convexHull(contours[0])
     hull = hull[:, 0, :]
     hull = np.concatenate((hull, hull[:1]), axis = 0)
+
     plt.subplot(235)
     plt.imshow(img, cmap= 'gray')
     plt.plot(hull[:,0], hull[:,1], 'r-')
     plt.title('Hull')
 
-    # To draw a rectangle Bounding Box around an object in image
+    # 6. Draw rectangle Bounding Box around an object in image
     x, y, w, h = cv.boundingRect(contours[0])
+
     plt.subplot(236)
     cv.rectangle(img, (x,y), (x+w, y+h), (255,0,0), 3)
     plt.imshow(img, cmap= 'gray')
-
+    plt.title('Bounding box')
 
     output_path = os.path.join(root, 'output/20_contours.jpg') 
     plt.savefig(output_path, bbox_inches = 'tight')
-    
+
     plt.show()
 
 
