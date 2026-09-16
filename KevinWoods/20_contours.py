@@ -23,26 +23,26 @@ def contours():
     new_h, new_w = int(scale*h), int(scale*w)
     img = cv.resize(img, (new_w, new_h))
 
-    # To find threshold value
+    # Draw Histogram of logo, to find it's Threshold value
     #hist = cv.calcHist([img], [0], None, [256], [0,256])
     #plt.subplot(232)
     #plt.plot(hist)
     
+    # 2. Binary mask
     _, imgThresh = cv.threshold(img, 205, 255, cv.THRESH_BINARY)
-
     kernel = np.ones((7,7), np.uint8)
 
-    # 2. To enlarge boundaries of objects in the image
+    # To enlarge boundaries of objects in the image
     imgThresh = cv.dilate(imgThresh, kernel)                                            # to show image details better
 
     plt.subplot(232)
     plt.imshow(imgThresh, cmap = 'gray')
-    plt.title('Binary mask (dilated)')
+    plt.title('Binary mask(dilated)')
 
     # 3. Implmenting contours to find all possible contours in the image
     contours, _ = cv.findContours(imgThresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)      # RETR TREE will get all contours without heirarchy
 
-    # Taking the first and biggest contour (relevant)
+    # Taking the first and biggest contour(relevant)
     contours = [contours[0]]
     cv.drawContours(img, contours, -1, (0, 255, 0), 5)                                  # drawing contours n the image(in reality, I can't see anthing)
 
@@ -50,8 +50,7 @@ def contours():
     plt.imshow(img, cmap = 'gray')
     plt.title('Contours')
 
-
-    # 4. Finding COM (Centre Of Mass) of the image
+    # 4. Finding COM(Centre Of Mass) of the image
     M = cv.moments(contours[0])
     Cx = int(M['m10']/M['m00'])
     Cy = int(M['m01']/M['m00'])
@@ -112,7 +111,6 @@ def contours():
     print("\nSolidity: ", solidity)
     print("\nequiDIa: ", equiDIa)
     print("\nAngle: ", angle)
-
 
 
 
