@@ -1,0 +1,14 @@
+
+Area of contour:  153888.5
+
+Perimeter of contour:  3345.9566144943237
+
+Aspect ratio:  1.2878581173260573
+
+Extent:  691952
+
+Solidity:  0.422471160551038
+
+equiDIa:  442.647629249245
+
+Angle:  84.11636352539062
