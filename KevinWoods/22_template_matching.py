@@ -12,6 +12,10 @@ def templateMatching():
     logo = img[510:550, 370:425]
     height, width, _ = logo.shape
 
+
+    print("Image shape: ", img.shape)
+    print("Logo/template shape: /n", logo.shape)
+
     plt.figure()
     plt.subplot(121)
     plt.imshow(img)
@@ -36,8 +40,8 @@ def templateMatching():
         templateMap = cv.matchTemplate(curImg, logo, methods[i])
         _,_, minLoc, maxLoc = cv.minMaxLoc(templateMap)
         
-        print(f"\nmethod: {titles[i]}\n")
-        print(f"Template Map size: {templateMap.size}\n")
+        print(f"\nmethod: {titles[i]}")
+        print(f"Template Map shape: {templateMap.shape}")
         print("templateMap: \n", templateMap)
         print(f"minLoc: {minLoc}, maxLoc: {maxLoc}\n")
 
@@ -74,4 +78,10 @@ if __name__ == "__main__":
 
 
 
-# NOTE: Only "TM_CCORR" method gave wrong template matching, otherwise we get accurate logo positions in the original image.
+# NOTE: 
+# 
+# 1. Only "TM_CCORR" method gave wrong template matching, otherwise we get accurate logo positions in the original image.
+# 
+# 2. If we observe closely, we can see that in SQDIFF and SQDIFF_NORMED methods, the logo area is darker, meanwhile for other methods, the logo area is brighter.
+# Reason: These 2 images gives the object matching at minimum score, corrospondes to min intensity (0), 
+# Meanwhile other methods gives the best object macthing at maximum score, corrosponds to max intensity (255).

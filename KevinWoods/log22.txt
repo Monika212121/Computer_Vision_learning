@@ -1,8 +1,8 @@
+Image shape:  (900, 1599, 3)
+Logo/template shape: /n (40, 55, 3)
 
 method: cv.TM_CCOEFF
-
-Template Map size: 1330245
-
+Template Map shape: (861, 1545)
 templateMap: 
  [[-5.38024438e+05 -6.01450000e+05 -6.71713625e+05 ...  1.13562062e+06
    1.13505362e+06  1.13649925e+06]
@@ -21,9 +21,7 @@ minLoc: (1223, 249), maxLoc: (370, 510)
 
 
 method: cv.TM_CCOEFF_NORMED
-
-Template Map size: 1330245
-
+Template Map shape: (861, 1545)
 templateMap: 
  [[-0.14059922 -0.15734664 -0.17585897 ...  0.23541482  0.23777078
    0.24060991]
@@ -42,9 +40,7 @@ minLoc: (387, 716), maxLoc: (370, 510)
 
 
 method: cv.TM_CCORR
-
-Template Map size: 1330245
-
+Template Map shape: (861, 1545)
 templateMap: 
  [[2.4092296e+07 2.4002488e+07 2.3905262e+07 ... 9.7751776e+07
   9.7678064e+07 9.7618680e+07]
@@ -63,9 +59,7 @@ minLoc: (710, 788), maxLoc: (1006, 11)
 
 
 method: cv.TM_CCORR_NORMED
-
-Template Map size: 1330245
-
+Template Map shape: (861, 1545)
 templateMap: 
  [[0.7161368  0.7142171  0.7120788  ... 0.7505983  0.7506244  0.7506646 ]
  [0.7259079  0.72325253 0.72023153 ... 0.7502448  0.7503033  0.75038105]
@@ -78,9 +72,7 @@ minLoc: (1416, 618), maxLoc: (370, 510)
 
 
 method: cv.TM_SQDIFF
-
-Template Map size: 1330245
-
+Template Map shape: (861, 1545)
 templateMap: 
  [[4.5778632e+07 4.5928476e+07 4.6092932e+07 ... 9.6871424e+07
   9.6683584e+07 9.6521640e+07]
@@ -99,9 +91,7 @@ minLoc: (370, 510), maxLoc: (1003, 26)
 
 
 method: cv.TM_SQDIFF_NORMED
-
-Template Map size: 1330245
-
+Template Map shape: (861, 1545)
 templateMap: 
  [[1.         1.         1.         ... 0.7438384  0.74298215 0.74222857]
  [1.         1.         1.         ... 0.74890274 0.74796355 0.7471071 ]
