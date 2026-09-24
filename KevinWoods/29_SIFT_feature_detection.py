@@ -37,7 +37,5 @@ def SIFT():
 
 
 
-
-
 if __name__ == "__main__":
     SIFT()
